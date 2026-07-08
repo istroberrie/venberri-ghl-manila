@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The GoHighLevel Growth Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+  :root{
+    --color-primary:#EAC65A;
+    --color-ink:#072543;
+    --color-surface-alt:#2E3B5B;
+    --color-accent-blue:#3F517D;
+    --color-primary-soft:#F0D687;
+    --color-primary-pale:#F6E5B4;
+    --color-bg:#FFFFFF;
+    --color-text-muted:rgba(7,37,67,.64);
+    --color-border:rgba(7,37,67,.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;color:var(--color-ink);-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{margin:0;font-family:'Poppins',sans-serif;}
+  p{margin:0;}
+  @page{size:letter;margin:0;}
+
+  .page{
+    width:8.5in;height:11in;position:relative;overflow:hidden;
+    page-break-after:always;background:#fff;
+  }
+  .page:last-child{page-break-after:auto;}
+  .page-pad{padding:0.62in 0.72in;height:100%;display:flex;flex-direction:column;}
+  .page-body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+
+  /* ---------- shared page furniture ---------- */
+  .pf-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.34in;}
+  .pf-logo{display:flex;align-items:center;gap:8px;}
+  .pf-logo img{height:22px;}
+  .pf-kicker{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted);}
+  .pf-footer{
+    position:absolute;left:0.72in;right:0.72in;bottom:0.42in;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:9.5px;color:var(--color-text-muted);
+    border-top:1px solid var(--color-border);padding-top:10px;
+  }
+  .pf-footer .dot{color:var(--color-primary);margin:0 6px;}
+
+  .sec-num{
+    width:46px;height:46px;border-radius:12px;background:var(--color-ink);color:var(--color-primary);
+    display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;
+    flex:none;
+  }
+  .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:0.3in;}
+  .sec-head h2{font-size:23px;font-weight:700;color:var(--color-ink);line-height:1.25;}
+  .sec-head .sec-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-blue);margin-bottom:3px;display:block;}
+
+  .chk-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .chk-list li{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;line-height:1.5;color:var(--color-ink);}
+  .chk-box{
+    width:19px;height:19px;border-radius:5px;border:1.5px solid var(--color-accent-blue);
+    display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px;background:#fff;
+  }
+  .chk-box i{font-size:12px;color:var(--color-accent-blue);}
+
+  .bullet-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;}
+  .bullet-list li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;line-height:1.5;color:var(--color-ink);}
+  .bullet-list li i{color:var(--color-primary);font-size:14px;margin-top:2px;flex:none;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:0.55in;}
+  .col-block{display:flex;flex-direction:column;}
+
+  /* ================= COVER ================= */
+  .cover{
+    background:linear-gradient(165deg,var(--color-ink) 0%,#0a2e52 55%,var(--color-surface-alt) 100%);
+    color:#fff;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .cover-inner{padding:0.85in 0.9in;height:100%;display:flex;flex-direction:column;justify-content:space-between;position:relative;}
+  .cover::before{
+    content:"";position:absolute;top:-120px;right:-140px;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(234,198,90,.22),transparent 70%);
+  }
+  .cover::after{
+    content:"";position:absolute;bottom:-160px;left:-120px;width:380px;height:380px;border-radius:50%;
+    background:radial-gradient(circle,rgba(63,81,125,.35),transparent 70%);
+  }
+  .cover-top{display:flex;align-items:center;gap:10px;position:relative;z-index:1;}
+  .cover-top img{height:26px;}
+  .cover-mid{position:relative;z-index:1;}
+  .cover-mid .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--color-primary);margin-bottom:0.28in;
+  }
+  .cover-mid .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--color-primary);}
+  .cover-mid h1{font-size:48px;line-height:1.12;font-weight:700;color:#fff;max-width:6.3in;}
+  .cover-mid .sub{
+    margin-top:0.24in;font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;color:var(--color-primary-soft);
+  }
+  .cover-mid .desc{margin-top:0.32in;font-size:14px;line-height:1.7;color:rgba(255,255,255,.72);max-width:4.6in;}
+  .cover-bottom{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;}
+  .cover-bottom .toc{display:flex;flex-direction:column;gap:8px;}
+  .cover-bottom .toc-item{display:flex;align-items:center;gap:10px;font-size:11.5px;color:rgba(255,255,255,.75);}
+  .cover-bottom .toc-item span.n{
+    width:20px;height:20px;border-radius:50%;border:1px solid rgba(234,198,90,.5);color:var(--color-primary);
+    font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .cover-bottom .made-by{font-size:10.5px;color:rgba(255,255,255,.5);text-align:right;}
+
+  /* ================= WORKFLOW GRID (page 4) ================= */
+  .wf-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4in;}
+  .wf-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+  .wf-list li{display:flex;align-items:center;gap:11px;font-size:12.5px;color:var(--color-ink);}
+  .wf-list li .idx{
+    width:22px;height:22px;border-radius:6px;background:var(--color-primary-pale);color:var(--color-ink);
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;display:flex;align-items:center;justify-content:center;flex:none;
+  }
+
+  /* ================= CLOSING ================= */
+  .closing{background:var(--color-ink);color:#fff;}
+  .closing-inner{padding:0.9in;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;}
+  .closing::before{
+    content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(234,198,90,.16),transparent 70%);
+  }
+  .closing-icon{
+    width:64px;height:64px;border-radius:16px;background:var(--color-primary);color:var(--color-ink);
+    display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:0.3in;position:relative;z-index:1;
+  }
+  .closing h2{font-size:30px;color:#fff;font-weight:700;position:relative;z-index:1;}
+  .closing p{margin-top:0.22in;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.72);max-width:4.6in;position:relative;z-index:1;}
+  .closing-cta{
+    margin-top:0.4in;display:inline-flex;align-items:center;gap:8px;background:var(--color-primary);color:var(--color-ink);
+    font-family:'Inter',sans-serif;font-weight:700;font-size:14px;padding:15px 30px;border-radius:999px;text-decoration:none;
+    position:relative;z-index:1;
+  }
+  .closing-brand{margin-top:0.7in;position:relative;z-index:1;}
+  .closing-brand img{height:24px;margin-bottom:10px;}
+  .closing-brand p{font-size:12px;color:rgba(255,255,255,.55);max-width:3.6in;margin:0 auto;}
+  .closing-links{
+    margin-top:0.35in;display:flex;gap:18px;position:relative;z-index:1;
+    font-size:11.5px;color:rgba(255,255,255,.7);
+  }
+  .closing-links a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+
+  <!-- ================= PAGE 1 — COVER ================= -->
+  <div class="page cover">
+    <div class="cover-inner">
+      <div class="cover-top">
+        <img src="logos/venberri white + gold.png" alt="venberri">
+      </div>
+      <div class="cover-mid">
+        <p class="eyebrow"><span class="dot"></span>Free resource</p>
+        <h1>The GoHighLevel<br>Growth Toolkit</h1>
+        <p class="sub">Build smarter. Automate faster. Scale with confidence.</p>
+        <p class="desc">Thanks for downloading the toolkit. Inside you'll find practical checklists, workflow ideas, and tips you can start using in your GoHighLevel account today.</p>
+      </div>
+      <div class="cover-bottom">
+        <div class="toc">
+          <div class="toc-item"><span class="n">1</span>Account setup checklist</div>
+          <div class="toc-item"><span class="n">2</span>Funnel launch checklist</div>
+          <div class="toc-item"><span class="n">3</span>CRM health checklist</div>
+          <div class="toc-item"><span class="n">4</span>20 essential workflow ideas</div>
+          <div class="toc-item"><span class="n">5</span>AI opportunities</div>
+          <div class="toc-item"><span class="n">6</span>Favourite HighLevel tips</div>
+        </div>
+        <p class="made-by">Prepared by Strawberry Joy Mercado<br>venberri &middot; GoHighLevel specialist</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 2 — ACCOUNT SETUP CHECKLIST ================= -->
+  <div class="page">
+    <div class="page-pad">
+      <div class="pf-header">
+        <div class="pf-logo"><img src="logos/venberri blue + gold.png" alt="venberri"></div>
+        <p class="pf-kicker">The GoHighLevel Growth Toolkit</p>
+      </div>
+
+      <div class="page-body">
+      <div class="sec-head">
+        <div class="sec-num">01</div>
+        <div>
+          <span class="sec-eyebrow">Checklist</span>
+          <h2>GoHighLevel account setup checklist</h2>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="col-block">
+          <ul class="chk-list">
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Agency settings</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Custom domains</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Email configuration</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Phone system</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Calendars</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <ul class="chk-list">
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>User permissions</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Branding</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Custom values</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Pipelines</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Opportunities</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+
+      <div class="pf-footer">
+        <span>venberri &middot; GoHighLevel specialist</span>
+        <span>02</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 3 — FUNNEL LAUNCH + CRM HEALTH ================= -->
+  <div class="page">
+    <div class="page-pad">
+      <div class="pf-header">
+        <div class="pf-logo"><img src="logos/venberri blue + gold.png" alt="venberri"></div>
+        <p class="pf-kicker">The GoHighLevel Growth Toolkit</p>
+      </div>
+
+      <div class="page-body">
+      <div class="two-col" style="gap:0.6in;">
+        <div class="col-block">
+          <div class="sec-head" style="margin-bottom:0.26in;">
+            <div class="sec-num">02</div>
+            <div>
+              <span class="sec-eyebrow">Checklist</span>
+              <h2 style="font-size:19px;">Funnel launch checklist</h2>
+            </div>
+          </div>
+          <p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;margin-bottom:0.22in;">Before launching any funnel, confirm:</p>
+          <ul class="chk-list">
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Mobile responsive</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Fast loading</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Clear CTA</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Tracking installed</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Thank-you page connected</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Automation tested</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Forms working</li>
+            <li><span class="chk-box"><i class="ph-bold ph-check"></i></span>Email notifications active</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <div class="sec-head" style="margin-bottom:0.26in;">
+            <div class="sec-num">03</div>
+            <div>
+              <span class="sec-eyebrow">Checklist</span>
+              <h2 style="font-size:19px;">CRM health checklist</h2>
+            </div>
+          </div>
+          <p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;margin-bottom:0.22in;">Ask yourself:</p>
+          <ul class="bullet-list">
+            <li><i class="ph-fill ph-question"></i>Are leads moving through pipelines?</li>
+            <li><i class="ph-fill ph-question"></i>Are duplicate contacts cleaned up?</li>
+            <li><i class="ph-fill ph-question"></i>Are tags organised?</li>
+            <li><i class="ph-fill ph-question"></i>Are opportunities assigned?</li>
+            <li><i class="ph-fill ph-question"></i>Are follow-ups automated?</li>
+            <li><i class="ph-fill ph-question"></i>Is reporting accurate?</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+
+      <div class="pf-footer">
+        <span>venberri &middot; GoHighLevel specialist</span>
+        <span>03</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 4 — 20 WORKFLOW IDEAS ================= -->
+  <div class="page">
+    <div class="page-pad">
+      <div class="pf-header">
+        <div class="pf-logo"><img src="logos/venberri blue + gold.png" alt="venberri"></div>
+        <p class="pf-kicker">The GoHighLevel Growth Toolkit</p>
+      </div>
+
+      <div class="page-body">
+      <div class="sec-head">
+        <div class="sec-num">04</div>
+        <div>
+          <span class="sec-eyebrow">Ideas</span>
+          <h2>20 essential workflow ideas</h2>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--color-text-muted);margin:-0.18in 0 0.3in;">Examples include:</p>
+
+      <div class="wf-grid">
+        <ul class="wf-list">
+          <li><span class="idx">01</span>New lead welcome</li>
+          <li><span class="idx">02</span>Missed call text-back</li>
+          <li><span class="idx">03</span>Appointment reminders</li>
+          <li><span class="idx">04</span>No-show follow-up</li>
+          <li><span class="idx">05</span>Review requests</li>
+          <li><span class="idx">06</span>Client onboarding</li>
+          <li><span class="idx">07</span>Lead nurturing</li>
+          <li><span class="idx">08</span>Win-back campaigns</li>
+          <li><span class="idx">09</span>Internal notifications</li>
+          <li><span class="idx">10</span>Birthday automation</li>
+        </ul>
+        <ul class="wf-list">
+          <li><span class="idx">11</span>Reactivation campaigns</li>
+          <li><span class="idx">12</span>Proposal follow-up</li>
+          <li><span class="idx">13</span>Deal won sequence</li>
+          <li><span class="idx">14</span>Deal lost sequence</li>
+          <li><span class="idx">15</span>Monthly check-in</li>
+          <li><span class="idx">16</span>Newsletter automation</li>
+          <li><span class="idx">17</span>Survey request</li>
+          <li><span class="idx">18</span>Referral request</li>
+          <li><span class="idx">19</span>Lead scoring alerts</li>
+          <li><span class="idx">20</span>Task reminders</li>
+        </ul>
+      </div>
+      </div>
+
+      <div class="pf-footer">
+        <span>venberri &middot; GoHighLevel specialist</span>
+        <span>04</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 5 — AI OPPORTUNITIES + FAVOURITE TIPS ================= -->
+  <div class="page">
+    <div class="page-pad">
+      <div class="pf-header">
+        <div class="pf-logo"><img src="logos/venberri blue + gold.png" alt="venberri"></div>
+        <p class="pf-kicker">The GoHighLevel Growth Toolkit</p>
+      </div>
+
+      <div class="page-body">
+      <div class="two-col" style="gap:0.6in;">
+        <div class="col-block">
+          <div class="sec-head" style="margin-bottom:0.26in;">
+            <div class="sec-num">05</div>
+            <div>
+              <span class="sec-eyebrow">Ideas</span>
+              <h2 style="font-size:19px;">AI opportunities</h2>
+            </div>
+          </div>
+          <p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;margin-bottom:0.22in;">Use AI to:</p>
+          <ul class="bullet-list">
+            <li><i class="ph-fill ph-sparkle"></i>Draft emails</li>
+            <li><i class="ph-fill ph-sparkle"></i>Write SMS messages</li>
+            <li><i class="ph-fill ph-sparkle"></i>Summarise conversations</li>
+            <li><i class="ph-fill ph-sparkle"></i>Respond to FAQs</li>
+            <li><i class="ph-fill ph-sparkle"></i>Qualify leads</li>
+            <li><i class="ph-fill ph-sparkle"></i>Generate blog outlines</li>
+            <li><i class="ph-fill ph-sparkle"></i>Create social media content</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <div class="sec-head" style="margin-bottom:0.26in;">
+            <div class="sec-num">06</div>
+            <div>
+              <span class="sec-eyebrow">Tips</span>
+              <h2 style="font-size:19px;">My favourite HighLevel tips</h2>
+            </div>
+          </div>
+          <ul class="bullet-list">
+            <li><i class="ph-fill ph-star"></i>Build once, duplicate often.</li>
+            <li><i class="ph-fill ph-star"></i>Keep workflows simple.</li>
+            <li><i class="ph-fill ph-star"></i>Name everything consistently.</li>
+            <li><i class="ph-fill ph-star"></i>Test before publishing.</li>
+            <li><i class="ph-fill ph-star"></i>Track every conversion.</li>
+            <li><i class="ph-fill ph-star"></i>Review automations monthly.</li>
+            <li><i class="ph-fill ph-star"></i>Focus on customer experience first.</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+
+      <div class="pf-footer">
+        <span>venberri &middot; GoHighLevel specialist</span>
+        <span>05</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PAGE 6 — CLOSING / CTA ================= -->
+  <div class="page closing">
+    <div class="closing-inner">
+      <div class="closing-icon"><i class="ph-fill ph-headset"></i></div>
+      <h2>Need help?</h2>
+      <p>If you'd like a second opinion on your GoHighLevel setup, I'm happy to help. Book a free strategy call and let's explore how we can improve your systems together.</p>
+      <a class="closing-cta" href="https://link.venberri.com/widget/bookings/discovery-call-strawberry">Book a free strategy call<i class="ph-fill ph-arrow-right"></i></a>
+
+      <div class="closing-brand">
+        <img src="logos/venberri white + gold.png" alt="venberri">
+        <p>Helping businesses streamline, automate, and scale with GoHighLevel.</p>
+      </div>
+      <div class="closing-links">
+        <a href="https://portfolio.venberri.com/">Portfolio</a>
+        <a href="https://www.linkedin.com/in/strawberrymercado/">LinkedIn</a>
+        <a href="mailto:strawberryjoymercado@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
