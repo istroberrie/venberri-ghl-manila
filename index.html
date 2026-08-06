@@ -132,18 +132,20 @@
 
   .hero-photo-wrap{position:relative;justify-self:center;}
   .hero-photo{
-    position:relative;width:min(320px,72vw);aspect-ratio:4/5;
+    position:relative;width:min(420px,84vw);aspect-ratio:5/4;
     border-radius:32px 32px 32px 8px;overflow:hidden;
     box-shadow:var(--shadow-lift);
   }
   .hero-photo img{width:100%;height:100%;object-fit:cover;}
   .hero-photo-tag{
-    position:absolute;left:-14px;bottom:22px;
-    background:var(--color-ink);color:#fff;padding:12px 18px;border-radius:var(--r-lg);
-    box-shadow:var(--shadow-lift);font-size:13px;font-weight:600;
-    display:flex;align-items:center;gap:8px;max-width:210px;
+    position:absolute;bottom:18px;
+    background:var(--color-ink);color:#fff;padding:10px 16px;border-radius:var(--r-lg);
+    box-shadow:var(--shadow-lift);font-size:12px;font-weight:600;
+    display:flex;align-items:center;gap:7px;max-width:150px;line-height:1.3;
   }
-  .hero-photo-tag i{color:var(--color-primary);font-size:18px;flex:none;}
+  .hero-photo-tag i{color:var(--color-primary);font-size:16px;flex:none;}
+  .hero-photo-tag--left{left:-14px;}
+  .hero-photo-tag--right{right:-14px;}
 
   /* ================= ABOUT ================= */
   .about-grid{display:grid;gap:40px;}
@@ -395,9 +397,10 @@
       </div>
       <div class="hero-photo-wrap">
         <div class="hero-photo">
-          <img src="pictures/strawberry.jpg" alt="Strawberry Joy Mercado, founder of venberri">
+          <img src="pictures/ven-and-strawberry.png" alt="Ven Michael Mercado and Strawberry Joy Mercado, co-founders of venberri">
         </div>
-        <div class="hero-photo-tag"><i class="ph-fill ph-certificate"></i>GoHighLevel Specialist</div>
+        <div class="hero-photo-tag hero-photo-tag--left"><i class="ph-fill ph-rocket-launch"></i>Co-founder | Growth Director</div>
+        <div class="hero-photo-tag hero-photo-tag--right"><i class="ph-fill ph-certificate"></i>Co-founder | GHL Specialist</div>
       </div>
     </div>
   </section>
